@@ -1,0 +1,53 @@
+{% extends 'fbapp/master.html' %}
+{% load static %}
+{% block content %}
+
+
+<section class="section">
+    <div class="container">
+    <div class="columns">
+        <div class="column is-half box">
+            <div class="image is-16by9"><img src="http://goldcoastmoneyonline.com/wp-content/uploads/2018/01/loader.gif" id="img"></div>
+        </div>
+        <div class="column">
+            <div class="section">
+                <center>
+                    <p class="subtitle" id="p">Your Result Is Loading please Wait..</p>
+                    <a id="sharebtn" href="#" class="button is-info  is-large">Share On Facebook</a>
+                    <a href="{% url 'detail' pk %}" class="button is-warning is-large">try Again</a>
+                </center>
+            </div>
+        </div>
+    </div>
+        
+    </div>
+</section>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$.get("../result/").done(
+    function(response){
+        console.log(response)
+        $("#img").attr('src',response.link)
+        var t = "So "+response.name+" This Is Your Result :)"
+        $("#p").text(t)
+        var rurl = 'https://facebook.com/sharer.php?u={{request.META.HTTP_HOST}}/app/results/'+response.resultpk
+        console.log(rurl)
+        $('#sharebtn').attr('href',rurl)
+    }
+);
+
+console.log("wheaher it prints before..")
+
+
+
+
+</script>
+
+
+
+{% endblock %}

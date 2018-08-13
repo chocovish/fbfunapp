@@ -1,0 +1,25 @@
+{% extends 'fbapp/master.html' %}
+
+{% block content %}
+
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-half">
+                <figure class="image is-16by9"><img src="{{result.imgurl}}"></figure>
+            </div>
+            <div class="column">
+                <section class="hero">
+                    <div class="hero-body has-text-centered">
+                        <p class="title">Umm.. {{result.name}} got this</p>
+                        <p class="subtitle">Let's check what you can get :)</p>
+                        <a href="{% url 'detail' result.apppk %}" class="button is-large is-info">I wanna Play too</a>
+                        <p class="title">{{request.META.HTTP_HOST}}</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

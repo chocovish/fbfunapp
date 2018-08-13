@@ -1,0 +1,42 @@
+{% extends 'fbapp/master.html' %}
+
+{% block content %}
+
+<div class="hero is-primary is-bold is-medium">
+    <div class="hero-body has has-text-centered">
+            <button class="button is-info is-medium" onclick="loginbtnfunc();">Login with Facebook</button>
+    </div>
+</div>
+
+<!----------------cards for postss-------->
+
+<section class="section">
+
+{% for q in queryset %}
+
+<div class="columns">
+    <div class="column is-one-third">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-2by1"><img src="{{q.cover}}"></figure>
+            </div>
+            <div class="card-content">
+                <p class="title is-size-5">{{q.name}}</p>
+                <p class="subtitle is-size-6">{{q.description}}</p>
+                <a class="button is-info is-fullwidth" href="{% url 'detail' q.pk %}">Play Now</a>
+            </div>
+            
+                
+            
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+</section>
+
+{% load static %}
+<script src="{% static 'fbscript.js' %}"></script>
+
+{% endblock %}
