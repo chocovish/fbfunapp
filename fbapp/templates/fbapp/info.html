@@ -13,13 +13,13 @@
             <div class="section">
                 <center>
                     <p class="subtitle" id="p">Your Result Is Loading please Wait..</p>
-                    <a id="sharebtn" href="#" class="button is-info  is-large">Share On Facebook</a>
-                    <a href="{% url 'detail' pk %}" class="button is-warning is-large">try Again</a>
+                    <a id="sharebtn" href="#" class="button is-info  is-large" style="margin: 3px">Share On Facebook</a>
+                    <a href="{% url 'detail' pk %}" class="button is-warning is-large" style="margin: 3px">Try Again</a>
                 </center>
             </div>
         </div>
     </div>
-        
+    {% include 'fbapp/horizontalbar.html' %}
     </div>
 </section>
 

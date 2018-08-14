@@ -1,0 +1,15 @@
+<div class="column">
+    <div class="notification is-warning has-text-centered "><strong class="title is-size-4">More Apps to Consider</strong></div>
+    {% for s in sidebar %}
+    <div class="card">
+            <div class="card-image">
+                <figure class="image is-2by1"><img src="{{s.cover}}"></figure>
+            </div>
+            <div class="card-content">
+                <p class="title is-size-5">{{s.name}}</p>
+                <p class="subtitle is-size-6">{{s.description}}</p>
+                <a class="button is-info is-fullwidth" href="{% url 'detail' s.pk %}">Play Now</a>
+            </div>    
+    </div><br>
+    {% endfor %}
+</div>

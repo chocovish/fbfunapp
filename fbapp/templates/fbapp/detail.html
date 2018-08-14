@@ -9,13 +9,12 @@
                 <figure class="image is-2by1 box"><img src="{{q.cover}}" alt="q.title"></figure>
                 <p class="title">{{q.name}}</p>
                 <p class="subtitle">{{q.description}}</p>
-                <button class="button is-medium is-fullwidth is-info" onclick="loginbtnfunc();">Continue With Facebook</button>
+                <button class="button is-large is-fullwidth is-info" onclick="loginbtnfunc();">Continue With Facebook</button>
             </div>
 
             <!---------Side bar is in this------------>
-            <div class="column">
-                // for sidebar..
-            </div>
+{% include 'fbapp/horizontalbar.html' %}
+            
         </div>
     </div>
 </section>

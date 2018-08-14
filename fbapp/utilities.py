@@ -36,28 +36,26 @@ def resultimg(request,pk):
     app = AppModel.objects.get(pk=pk)
 
     name = getname(request,name='first_name')
-    dp = Image.open(getdp(request))
-    bg = Image.open('background.png')
+    with Image.open(getdp(request)) as dp, Image.open('background.png') as bg:
+        bg.paste(dp,(20,20))
 
-    bg.paste(dp,(20,20))
+        text = app.placeholder.format(name=name)
+        random = app.randoms.split(",")
+        random = random[randint(0, len(random)-1)]
 
-    text = app.placeholder.format(name=name)
-    random = app.randoms.split(",")
-    random = random[randint(0, len(random)-1)]
+        font = ImageFont.truetype('anomali.otf',size=26)
+        tw,th = font.getsize(text)
 
-    font = ImageFont.truetype('anomali.otf',size=26)
-    tw,th = font.getsize(text)
+        bgd = ImageDraw.Draw(bg)
+        bgd.text((350+(290-tw)/2,40), text, font=font)
 
-    bgd = ImageDraw.Draw(bg)
-    bgd.text((350+(290-tw)/2,40), text, font=font)
+        font = ImageFont.truetype('anomali.otf', size=48)
+        tw,th = font.getsize_multiline(random)
 
-    font = ImageFont.truetype('anomali.otf', size=48)
-    tw,th = font.getsize_multiline(random)
+        bgd.multiline_text((350+(290-tw)/2, 120), random, font=font, align='center')
 
-    bgd.multiline_text((350+(290-tw)/2, 120), random, font=font, align='center')
-
-    bg.save('resultimage.png')
-    bg.close();dp.close()
+        bg.save('resultimage.png')
+        bg.close();dp.close()
 
     with open("resultimage.png","rb") as f:
         r = upload(f)

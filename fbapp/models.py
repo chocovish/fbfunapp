@@ -9,8 +9,11 @@ class AppModel(models.Model):
     placeholder = models.CharField(max_length=40)
     randoms = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cover = models.URLField()
+    cover = models.URLField(default="https://i.imgur.com/5lH7xkG.jpg")
     def __str__(self): return self.name
+    
+    class Meta:
+        ordering = ['-pk']
 
 
 class Result(models.Model):

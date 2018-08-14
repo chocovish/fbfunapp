@@ -14,12 +14,15 @@
                         <p class="title">Umm.. {{result.name}} got this</p>
                         <p class="subtitle">Let's check what you can get :)</p>
                         <a href="{% url 'detail' result.apppk %}" class="button is-large is-info">I wanna Play too</a>
-                        <p class="title">{{request.META.HTTP_HOST}}</p>
                     </div>
                 </section>
             </div>
         </div>
+
+{% include 'fbapp/horizontalbar.html' %}
+
     </div>
 </section>
+
 
 {% endblock %}
