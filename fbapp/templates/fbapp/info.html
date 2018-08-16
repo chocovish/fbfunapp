@@ -13,7 +13,7 @@
             <div class="section">
                 <center>
                     <p class="subtitle" id="p">Your Result Is Loading please Wait..</p>
-                    <a id="sharebtn" href="#" class="button is-info  is-large" style="margin: 3px">Share On Facebook</a>
+                    <button id="sharebtn" class="button is-info is-large" style="margin: 3px" disabled>Share On Facebook</button>
                     <a href="{% url 'detail' pk %}" class="button is-warning is-large" style="margin: 3px">Try Again</a>
                 </center>
             </div>
@@ -26,7 +26,7 @@
 
 
 
-
+<script src="{% static 'fbscript.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $.get("../result/").done(
@@ -37,12 +37,23 @@ $.get("../result/").done(
         $("#p").text(t)
         var rurl = 'https://facebook.com/sharer.php?u={{request.META.HTTP_HOST}}/app/results/'+response.resultpk
         console.log(rurl)
-        $('#sharebtn').attr('href',rurl)
+        $('#sharebtn').click(() => sharefb(rurl))
+        $("#sharebtn").removeAttr('disabled')
+        
     }
 );
 
 console.log("wheaher it prints before..")
 
+//......sharefunction :) ...
+
+function sharefb(url){
+    FB.ui({
+  method: 'share',
+  mobile_iframe: true,
+  href: url,
+}, function(response){console.log(response)});
+}
 
 
 
