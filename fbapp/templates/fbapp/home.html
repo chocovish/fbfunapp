@@ -9,10 +9,10 @@
 
 <!----------------cards for postss-------->
 
-<section class="section">
-    <div class="columns">
-{% for q in queryset %}
 
+<section class="section">
+    <div class="columns is-multiline">
+{% for q in queryset %}
 
     <div class="column is-one-third">
         <div class="card">
@@ -26,7 +26,6 @@
             </div>    
         </div>
     </div>
-
 
 {% endfor %}
 </div>
