@@ -1,0 +1,38 @@
+{% extends 'fbapp/master.html' %}
+
+{% block content %}
+<div class="container hero hero-body">
+<div class="columns">
+    <div class="column is-half">
+                    <form action="" method="post">
+                    
+                    {% csrf_token %}
+                    {% if form.errors %} {{form.errors}} {% endif %}
+                    {% for f in form %}
+                    <div class="field">
+                        <label class="label" for="{{f.name}}">{{f.label}}</label>
+                        {{f}}
+                    </div>
+                    {% endfor %}
+                    <br>
+                    <button type="submit" class="button is-success is-fullwidth"><strong>Add App</strong></button>
+                    </form>               
+    </div>
+    <div class="column" style="margin-top:1%;margin-left: 4%;margin-right: 4%">
+        <h1 class="title">Follow The Instructions</h1>
+        <h2 class="subtitle">It's quite easy to use..</h2>
+        <div class="content">
+            <ul>
+                <li>Give your App A name</li>
+                <li>Give your App A Short Description</li>
+                <li>In <strong>PLACEHOLDER</strong> You can use <b>{name}</b> Which Will Be Converted To User's Name</li>
+                <li>Add Random Choices Seperated By Comma</li>
+                <li>Give <b>4:2</b> Photo As Your App Cover</li>
+                <li>Voila!! You're Done!</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

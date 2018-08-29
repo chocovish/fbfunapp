@@ -35,7 +35,7 @@ $.get("../result/").done(
         $("#img").attr('src',response.link)
         var t = "So "+response.name+" This Is Your Result :)"
         $("#p").text(t)
-        var rurl = '{{request.META.HTTP_HOST}}/app/results/'+response.resultpk+'/';
+        var rurl = 'https://{{request.META.HTTP_HOST}}/app/results/'+response.resultpk+'/';
         console.log(rurl)
         $('#sharebtn').click(() => sharefb(rurl))
         $("#sharebtn").removeAttr('disabled')
@@ -48,7 +48,7 @@ function sharefb(url){
   method: 'share',
   mobile_iframe: true,
   href: url,
-  redirect_uri: '{{request.META.HTTP_HOST}}',
+  redirect_uri: 'https://{{request.META.HTTP_HOST}}',
 }, function(response){console.log(response)});
 }
 

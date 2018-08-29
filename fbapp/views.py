@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponseRedirect
 from .models import AppModel,Result
+from .forms import addform
 
 def latest(fetch=5):
     return AppModel.objects.all()[:fetch]
@@ -30,7 +31,15 @@ def tnc(request):
     return render(request,'fbapp/tnc.html')
 
 
-
+def addapp(request):
+    if request.method=='POST':
+        form = addform(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+        return render(request,'fbapp/addform.html',{'form':form})
+    form = addform()
+    return render(request,'fbapp/addform.html',{'form':form})
 
 
 
