@@ -52,7 +52,7 @@ def resultimg(request,pk):
         bgd = ImageDraw.Draw(bg)
         bgd.multiline_text((350+(290-tw)/2,40), text, font=font, align='center')
 
-        font = ImageFont.truetype('brush.otf', size=38, encoding='UTF-8')
+        font = ImageFont.truetype('brush.otf', size=30, encoding='UTF-8')
         tw,th = font.getsize_multiline(random)
 
         bgd.multiline_text((350+(290-tw)/2, 130), random, font=font, align='center')

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class AppModel(models.Model):
     name = models.CharField(max_length=120)
     description = models.TextField(default="No Description Given For this App")
-    placeholder = models.CharField(max_length=40)
+    placeholder = models.CharField(max_length=50)
     randoms = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     cover = models.URLField(default="https://i.imgur.com/5lH7xkG.jpg")
