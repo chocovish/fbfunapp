@@ -43,16 +43,16 @@ def resultimg(request,pk):
         random = app.randoms.split(",")
         random = random[randint(0, len(random)-1)]
 
-        font = ImageFont.truetype('anomali.otf',size=26)
-        tw,th = font.getsize(text)
+        font = ImageFont.truetype('anomali.otf',size=28, encoding='UTF-8')
+        tw,th = font.getsize_multiline(text)
 
         bgd = ImageDraw.Draw(bg)
-        bgd.text((350+(290-tw)/2,40), text, font=font)
+        bgd.multiline_text((350+(290-tw)/2,40), text, font=font, align='center')
 
-        font = ImageFont.truetype('anomali.otf', size=48)
+        font = ImageFont.truetype('brush.otf', size=40, encoding='UTF-8')
         tw,th = font.getsize_multiline(random)
 
-        bgd.multiline_text((350+(290-tw)/2, 120), random, font=font, align='center')
+        bgd.multiline_text((350+(290-tw)/2, 130), random, font=font, align='center')
 
         bg.save('resultimage.png')
         bg.close();dp.close()
