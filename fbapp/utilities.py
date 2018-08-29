@@ -3,6 +3,7 @@ from PIL import Image, ImageFont, ImageDraw
 from django.http import JsonResponse
 from .models import AppModel, Result
 from random import randint
+import textwrap
 
 
 def getdp(request):
@@ -40,8 +41,10 @@ def resultimg(request,pk):
         bg.paste(dp,(20,20))
 
         text = app.placeholder.format(name=name)
+        text = textwrap.fill(text,width=20)
         random = app.randoms.split(",")
         random = random[randint(0, len(random)-1)]
+        random = textwrap.fill(random,width=12)
 
         font = ImageFont.truetype('anomali.otf',size=28, encoding='UTF-8')
         tw,th = font.getsize_multiline(text)
@@ -49,7 +52,7 @@ def resultimg(request,pk):
         bgd = ImageDraw.Draw(bg)
         bgd.multiline_text((350+(290-tw)/2,40), text, font=font, align='center')
 
-        font = ImageFont.truetype('brush.otf', size=40, encoding='UTF-8')
+        font = ImageFont.truetype('brush.otf', size=38, encoding='UTF-8')
         tw,th = font.getsize_multiline(random)
 
         bgd.multiline_text((350+(290-tw)/2, 130), random, font=font, align='center')
